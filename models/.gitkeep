@@ -1,0 +1,5 @@
+# Placeholder for YOLO models
+# Models will be automatically downloaded on first run
+
+# To manually download:
+# python -c "from ultralytics import YOLO; YOLO('yolov8n.pt')"

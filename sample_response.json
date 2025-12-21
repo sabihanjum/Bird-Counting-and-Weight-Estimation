@@ -1,0 +1,91 @@
+{
+  "counts": [
+    {
+      "timestamp": "00:00:00",
+      "count": 18,
+      "frame": 0
+    },
+    {
+      "timestamp": "00:00:01",
+      "count": 19,
+      "frame": 30
+    },
+    {
+      "timestamp": "00:00:02",
+      "count": 17,
+      "frame": 60
+    }
+  ],
+  "tracks_sample": [
+    {
+      "track_id": 1,
+      "boxes": [
+        [245.3, 312.8, 298.6, 365.2],
+        [248.1, 315.2, 301.4, 367.8]
+      ],
+      "confidences": [0.89, 0.91]
+    },
+    {
+      "track_id": 2,
+      "boxes": [
+        [512.7, 243.1, 563.2, 294.8],
+        [515.3, 245.6, 565.8, 297.3]
+      ],
+      "confidences": [0.85, 0.87]
+    }
+  ],
+  "weight_estimates": {
+    "unit": "index",
+    "per_bird": [
+      {
+        "track_id": 1,
+        "weight_index": 245.3,
+        "confidence": 0.85,
+        "num_observations": 120
+      },
+      {
+        "track_id": 2,
+        "weight_index": 238.7,
+        "confidence": 0.82,
+        "num_observations": 115
+      },
+      {
+        "track_id": 3,
+        "weight_index": 251.2,
+        "confidence": 0.88,
+        "num_observations": 130
+      }
+    ],
+    "aggregate": {
+      "mean_weight_index": 243.5,
+      "std": 12.8,
+      "median_weight_index": 242.1,
+      "min_weight_index": 198.4,
+      "max_weight_index": 285.9,
+      "total_birds": 18
+    },
+    "calibration_note": "Weight index is a proxy based on bird bounding box area. To convert to grams, calibration is required with: (1) Known weights for 10-20 birds at various sizes, (2) Camera calibration data (pixel-to-cm ratio at floor level), (3) Regression model training: weight_grams = alpha * weight_index + beta. Current formula: weight_index = mean_area * area_factor * density_factor",
+    "methodology": {
+      "features": [
+        "Bounding box area (pixels²)",
+        "Track confidence (detection reliability)",
+        "Temporal consistency (number of observations)"
+      ],
+      "assumptions": [
+        "Fixed camera position and angle",
+        "Birds on flat surface",
+        "Consistent lighting conditions",
+        "Camera height remains constant"
+      ]
+    }
+  },
+  "artifacts": {
+    "annotated_video": "outputs/sample_annotated_20231218_143022.mp4",
+    "tracks_json": "outputs/sample_tracks_20231218_143022.json"
+  },
+  "video_info": {
+    "filename": "sample_video.mp4",
+    "total_frames_processed": 450,
+    "total_tracks": 25
+  }
+}
